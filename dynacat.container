@@ -1,0 +1,14 @@
+[Unit]
+Description=Dynacat dashboard service
+Documentation=https://dynacat.artur.zone/
+After=podman.socket
+Requires=podman.socket
+
+[Container]
+ContainerName=dynacat
+Image=docker.io/panonim/dynacat
+Network=reverse_proxy.network
+
+Volume=/etc/localtime:/etc/localtime:ro
+Volume=dynacat_config:/app/config
+Volume=dynacat_assets:/app/asssets

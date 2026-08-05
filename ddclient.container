@@ -1,0 +1,18 @@
+[Unit]
+Description=ddclient service
+Documentation=https://docs.linuxserver.io/images/docker-ddclient/
+After=podman.socket
+Requires=podman.socket
+
+[Container]
+ContainerName=ddclient
+Image=lscr.io/linuxserver/ddclient:latest
+
+Volume=ddclient_config:/config
+
+Environment=PUID=1000
+Environment=PGID=1000
+Environment=TZ=America/Chicago
+
+[Install]
+WantedBy=default.target

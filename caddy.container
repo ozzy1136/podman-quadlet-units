@@ -1,0 +1,23 @@
+[Unit]
+AssertPathIsDirectory=%h/caddy_etc
+AssertPathExists=%h/caddy_etc/Caddyfile
+After=caddy.socket
+Requires=caddy.socket
+
+[Service]
+ExecReload=podman exec caddy /usr/bin/caddy reload --config /etc/caddy/Caddyfile --address unix//run/admin.sock --force
+
+[Container]
+ContainerName=caddy
+Exec=/usr/bin/caddy run --config /etc/caddy/Caddyfile
+Image=docker.io/library/caddy
+Network=reverse_proxy.network
+NoNewPrivileges=true
+Notify=true
+ReadOnly=true
+
+Volume=%h/caddy_etc:/etc/caddy:Z
+Volume=caddy_config:/config
+Volume=caddy_data:/data
+
+NetworkAlias=virtualvilla.net
