@@ -1,0 +1,33 @@
+[Unit]
+Description=Authelia authentication service
+After=network-online.target caddy.socket
+Requires=caddy.socket
+
+[Container]
+ContainerName=authelia
+Image=ghcr.io/authelia/authelia:latest
+Network=reverse_proxy.network
+
+Volume=authelia_config:/config:Z
+
+Secret=authelia_session_secret,type=mount,target=/run/secrets/authelia_session_secret
+Secret=authelia_storage_encryption_key,type=mount,target=/run/secrets/authelia_storage_encryption_key
+Secret=authelia_smtp_password,type=mount,target=/run/secrets/authelia_smtp_password
+Secret=authelia_jwt_secret,type=mount,target=/run/secrets/authelia_jwt_secret
+Secret=authelia_oidc_hmac,type=mount,target=/run/secrets/authelia_OIDC_HMAC
+
+Environment=TZ=America/Chicago
+Environment=X_AUTHELIA_CONFIG_FILTERS=template
+Environment=AUTHELIA_SESSION_SECRET_FILE=/run/secrets/authelia_session_secret
+Environment=AUTHELIA_STORAGE_ENCRYPTION_KEY_FILE=/run/secrets/authelia_storage_encryption_key
+Environment=AUTHELIA_NOTIFIER_SMTP_PASSWORD_FILE=/run/secrets/authelia_smtp_password
+Environment=AUTHELIA_IDENTITY_VALIDATION_RESET_PASSWORD_JWT_SECRET_FILE=/run/secrets/authelia_jwt_secret
+Environment=AUTHELIA_IDENTITY_PROVIDERS_OIDC_HMAC_SECRET_FILE=/run/secrets/authelia_OIDC_HMAC
+
+AutoUpdate=registry
+
+[Service]
+; Restart=always
+
+[Install]
+WantedBy=default.target

@@ -12,3 +12,9 @@ Network=reverse_proxy.network
 Volume=/etc/localtime:/etc/localtime:ro
 Volume=dynacat_config:/app/config
 Volume=dynacat_assets:/app/asssets
+
+Secret=dynacat_oidc_client_secret,type=mount,target=/run/secrets/dynacat_oidc_client_secret
+Secret=dynacat_secret_key,type=mount,target=/run/secrets/dynacat_secret_key
+
+[Install]
+WantedBy=default.target
