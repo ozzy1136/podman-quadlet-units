@@ -19,5 +19,3 @@ ReadOnly=true
 Volume=%h/caddy_etc:/etc/caddy:Z
 Volume=caddy_config:/config
 Volume=caddy_data:/data
-
-NetworkAlias=virtualvilla.net

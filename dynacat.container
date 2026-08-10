@@ -1,8 +1,11 @@
 [Unit]
 Description=Dynacat dashboard service
 Documentation=https://dynacat.artur.zone/
-After=podman.socket
-Requires=podman.socket
+After=authelia.service
+Requires=authelia.service
+
+[Service]
+Restart=always
 
 [Container]
 ContainerName=dynacat
