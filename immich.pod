@@ -1,0 +1,10 @@
+[Unit]
+Requires=podman.socket
+After=podman.socket
+
+[Pod]
+PodName=immich-pod
+Network=reverse_proxy.network
+
+[Install]
+WantedBy=default.target

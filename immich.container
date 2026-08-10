@@ -1,0 +1,23 @@
+[Unit]
+Description=Immich server
+Documentation=https://docs.immich.app/overview/quick-start
+After=immich_redis.service immich_db.service immich_ml.service
+Requires=immich_redis.service immich_db.service immich_ml.service
+
+[Container]
+Pod=immich.pod
+ContainerName=immich
+Image=ghcr.io/immich-app/immich-server:release
+
+AddDevice=nvidia.com/gpu=all
+
+Volume=/mnt/podman/data/media/photos_and_videos/:/data
+Volume=/etc/localtime:/etc/localtime:ro
+
+Secret=immich_db_password,type=env,target=DB_PASSWORD
+
+Environment=IMMICH_LOG_LEVEL=debug
+Environment=DB_HOSTNAME=localhost
+Environment=DB_USERNAME=postgres
+Environment=DB_DATABASE_NAME=immich
+Environment=REDIS_HOSTNAME=localhost

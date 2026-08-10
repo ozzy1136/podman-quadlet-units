@@ -1,0 +1,11 @@
+[Unit]
+Description=Machine learning service used by Immich
+
+[Container]
+Pod=immich.pod
+ContainerName=immich-ml
+Image=ghcr.io/immich-app/immich-machine-learning:release-cuda
+
+AddDevice=nvidia.com/gpu=all
+
+Volume=immich_ml_model_cache:/cache
