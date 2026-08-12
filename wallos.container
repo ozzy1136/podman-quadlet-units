@@ -1,0 +1,18 @@
+[Unit]
+Description=Wallos subscription management service
+Documenation=https://github.com/ellite/Wallos?tab=readme-ov-file#installation
+After=podman.socket
+Requires=podman.socket
+
+[Container]
+ContainerName=wallos
+Image=docker.io/bellamy/wallos:latest
+Network=reverse_proxy.network
+
+Volume=wallos_db:/var/www/html/db:Z
+Volume=wallos_logos:/var/www/html/images/uploads/logos:Z
+
+Environment=TZ=America/Chicago
+
+[Install]
+WantedBy=default.target
