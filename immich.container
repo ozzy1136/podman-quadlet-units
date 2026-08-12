@@ -1,8 +1,8 @@
 [Unit]
 Description=Immich server
 Documentation=https://docs.immich.app/overview/quick-start
-After=immich_redis.service immich_db.service immich_ml.service
-Requires=immich_redis.service immich_db.service immich_ml.service
+After=immich-redis.service immich-db.service immich-ml.service
+Requires=immich-redis.service immich-db.service immich-ml.service
 
 [Container]
 Pod=immich.pod
