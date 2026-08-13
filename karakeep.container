@@ -20,7 +20,6 @@ Secret=karakeep_meili_master_key,type=env,target=MEILI_MASTER_KEY
 Secret=karakeep_smtp_password,type=env,target=SMTP_PASSWORD
 
 Environment=PORT=11033
-Environment=LOG_LEVEL=warning
 Environment=DATA_DIR=/data
 Environment=MEILI_ADDR=http://127.0.0.1:7700
 Environment=BROWSER_WEB_URL=http://127.0.0.1:9222
