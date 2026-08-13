@@ -1,0 +1,10 @@
+[Unit]
+After=podman.socket
+Requires=podman.socket
+
+[Pod]
+PodName=karakeep-pod
+Network=reverse_proxy.network
+
+[Install]
+WantedBy=default.target

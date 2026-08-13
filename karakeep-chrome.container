@@ -1,0 +1,9 @@
+[Unit]
+Description=Chrome container used by Karakeep
+
+[Container]
+Pod=karakeep.pod
+ContainerName=karakeep-chrome
+Image=ghcr.io/karakeep-app/karakeep-chrome:release
+RunInit=true
+Exec=--disable-gpu --disable-dev-shm-usage --hide-scrollbars --disable-blink-features=AutomationControlled --window-size=1440,900

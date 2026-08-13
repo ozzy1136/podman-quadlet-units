@@ -1,0 +1,14 @@
+[Unit]
+Description=Meilisearch service used by Karakeep
+
+[Container]
+Pod=karakeep.pod
+ContainerName=karakeep-meilisearch
+Image=docker.io/getmeili/meilisearch:v1.41.0
+
+Volume=meilisearch_data:/meili_data:z
+
+Secret=karakeep_nextauth_secret,type=env,target=NEXTAUTH_SECRET
+Secret=karakeep_meili_master_key,type=env,target=MEILI_MASTER_KEY
+
+Environment=MEILI_NO_ANALYTICS=true
