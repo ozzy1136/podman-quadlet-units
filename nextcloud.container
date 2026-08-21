@@ -1,0 +1,22 @@
+[Unit]
+Description=Nextcloud service
+Documentation=https://github.com/nextcloud/docker
+After=nextcloud-db.service nextcloud-redis.service
+Requires=nextcloud-db.service nextcloud-redis.service
+
+[Service]
+Restart=always
+
+[Container]
+Pod=nextcloud.pod
+ContainerName=nextcloud
+Image=docker.io/nextcloud:apache
+
+Volume=nextcloud_data:/var/www/html:z
+
+Secret=nextcloud_mysql_password,type=env,target=MYSQL_PASSWORD
+
+Environment=MYSQL_HOST=nextcloud-db
+Environment=REDIS_HOST=nextcloud-redis
+Environment=MYSQL_DATABASE=nextcloud
+Environment=MYSQL_USER=nextcloud

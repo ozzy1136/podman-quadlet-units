@@ -1,0 +1,15 @@
+[Unit]
+Description=Container running cron jobs for Nextcloud
+After=nextcloud-db.service nextcloud-redis.service
+Requires=nextcloud-db.service nextcloud-redis.service
+
+[Service]
+Restart=always
+
+[Container]
+Pod=nextcloud.pod
+ContainerName=nextcloud-cron
+Image=docker.io/nextcloud:apache
+Entrypoint=/cron.sh
+
+Volume=nextcloud_data:/var/www/html:z

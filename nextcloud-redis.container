@@ -1,0 +1,7 @@
+[Unit]
+Description=Redis service used by Nextcloud
+
+[Container]
+Pod=nextcloud.pod
+ContainerName=nextcloud-redis
+Image=docker.io/redis:alpine
