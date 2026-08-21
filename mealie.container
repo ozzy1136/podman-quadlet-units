@@ -32,3 +32,6 @@ Environment=OIDC_CLIENT_ID=ecmiT7H-fkR~4MgnwriuL.ZvmYcp6WDQmlqzVr0_oW6rBhA.n_C11
 Environment=OIDC_AUTO_REDIRECT=false
 Environment=OIDC_ADMIN_GROUP=admins
 Environment=OIDC_USER_GROUP=users
+
+[Install]
+WantedBy=default.target
