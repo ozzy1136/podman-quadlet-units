@@ -7,7 +7,7 @@ ContainerName=nextcloud-db
 Image=docker.io/mariadb:lts
 Exec=--transaction-isolation=READ-COMMITTED
 
-Volume=/mnt/podman/data/nextcloud:/var/lib/mysql:Z
+Volume=/mnt/podman/nextcloud:/var/lib/mysql:Z
 
 Secret=nextcloud_mysql_password,type=env,target=MYSQL_PASSWORD
 Secret=nextcloud_mysql_root_password,type=env,target=MYSQL_ROOT_PASSWORD

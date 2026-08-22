@@ -10,7 +10,7 @@ Image=ghcr.io/mealie-recipes/mealie:v3.22.0
 Network=reverse_proxy.network
 Memory=1000m
 
-Volume=mealie_data:/app/data:Z
+Volume=/mnt/podman/mealie:/app/data:Z
 
 Secret=mealie_smtp_password,type=env,target=SMTP_PASSWORD
 Secret=mealie_oidc_client_secret,type=env,target=OIDC_CLIENT_SECRET

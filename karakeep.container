@@ -12,7 +12,7 @@ Pod=karakeep.pod
 ContainerName=karakeep
 Image=ghcr.io/karakeep-app/karakeep:release
 
-Volume=karakeep_data:/data:Z
+Volume=/mnt/podman/karakeep:/data:Z
 
 Secret=karakeep_oauth_client_secret,type=env,target=OAUTH_CLIENT_SECRET
 Secret=karakeep_nextauth_secret,type=env,target=NEXTAUTH_SECRET
